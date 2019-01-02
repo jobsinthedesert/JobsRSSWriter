@@ -1,3 +1,9 @@
+def remove_newline(item):
+    clean_line = item.replace('\n', '')
+
+    return clean_line
+
+
 def format_element(job, opening_tag, closing_tag):
     """
     Formats <link> and <title> elements
