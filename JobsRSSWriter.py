@@ -47,6 +47,28 @@ def format_jobs(jobs):
 
     return job_item_string
 
+def rss_sandwich(job_items, title, link):
+    """
+    Returns an RSS feed as a string
+    """
+    xml_opening = '<?xml version="1.0" encoding="UTF-8" ?>\n'
+    rss_opening = '<rss version="2.0">\n\n'
+    channel_opening = '<channel>\n'
+
+    channel_title = '  <title>'+title+'</title>\n'
+    channel_link = '  <link>'+link+'</link>\n'
+
+    header = xml_opening + rss_opening + channel_opening + channel_title + channel_link
+
+    channel_closing = '</channel>\n'
+    rss_closing = '</rss>'
+
+    closing = channel_closing + rss_closing
+
+    rss_feed = header + job_items + closing
+
+    return rss_feed
+
 def format_rss(jobs, title, link):
     """
     Returns an RSS feed as a string
